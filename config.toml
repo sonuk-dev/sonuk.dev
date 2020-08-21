@@ -1,0 +1,21 @@
+baseURL = "https://sonuk.dev/"
+languageCode = "en-us"
+title = "Sonik Web Site"
+theme = "stip"
+disableKinds = ["page", "section", "taxonomy", "taxonomyTerm"]
+
+[Author]
+    name = "Sonuk"
+    bio = "The World Explorer"
+
+[params]
+    [[params.links]]
+        icon = "github"
+        title = "Github"
+        url = "https://github.com/sonuk-dev"
+
+[params.colors]
+    background = "#000000"
+    circle = "#3942ba"
+    foreground = "#c7d0fc"
+    hover = "#cd6cf7"
