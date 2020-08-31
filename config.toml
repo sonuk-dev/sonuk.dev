@@ -5,7 +5,7 @@ theme = "stip"
 disableKinds = ["page", "section", "taxonomy", "taxonomyTerm"]
 
 [Author]
-    name = "Sonuk"
+    name = "SoNuk"
     bio = "The World Explorer"
 
 [params]
