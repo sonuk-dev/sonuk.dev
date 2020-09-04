@@ -1,6 +1,6 @@
 baseURL = "https://sonuk.dev/"
 languageCode = "en-us"
-title = "Sonik Web Site"
+title = "SoNuk Web Site"
 theme = "stip"
 disableKinds = ["page", "section", "taxonomy", "taxonomyTerm"]
 
