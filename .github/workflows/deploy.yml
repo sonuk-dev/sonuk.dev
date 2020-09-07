@@ -34,8 +34,15 @@ jobs:
         run: |
           mkdir out
           hugo -d out
-          ls -l
-          echo "================"
-          ls -l out
+      - name: Copy file via scp
+        uses: appleboy/scp-action@master
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USERNAME: ${{ secrets.DEPLOY_USER }}
+          KEY: ${{ secrets.DEPLOY_KEY }}
+        with:
+          source: "out/*"
+          target: "html/v2"
+          strip_components: 1
 
 
