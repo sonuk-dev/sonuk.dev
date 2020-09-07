@@ -20,7 +20,7 @@ jobs:
           node-version: 12.x
       - name: 🔧 Install tools
         run: |
-          sudo apt install curl jq
+          sudo apt install curl jq openssh-client
           npm install postcss-cli autoprefixer
       - name: 🤵 Install latest Hugo
         run: |
