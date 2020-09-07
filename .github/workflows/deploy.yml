@@ -34,15 +34,11 @@ jobs:
         run: |
           mkdir out
           hugo -d out
-      - name: Copy file via scp
-        uses: appleboy/scp-action@master
-        env:
-          HOST: ${{ secrets.DEPLOY_HOST }}
-          USERNAME: ${{ secrets.DEPLOY_USER }}
-          KEY: ${{ secrets.DEPLOY_KEY }}
-        with:
-          source: "out/*"
-          target: "html/v2"
-          strip_components: 1
-
+      - name: 🚀 Deploying via scp
+        run: |
+          echo ${{ secrets.DEPLOY_KEY }} >> action.key
+          cd out
+          scp -o "StrictHostKeyChecking no" -i ../action.key -p * ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:html/.
+          cd ..
+          rm action.key
 
