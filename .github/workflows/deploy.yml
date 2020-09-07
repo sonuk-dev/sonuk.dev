@@ -29,3 +29,10 @@ jobs:
           sudo mv hugo /usr/local/bin/
           cd .. && rm -rf tmp/
           hugo version
+      - name: 🤵 Build the pages
+        run: |
+          mkdir out
+          hugo -d out
+          ls -l out
+
+
