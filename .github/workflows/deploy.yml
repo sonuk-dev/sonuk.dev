@@ -37,6 +37,7 @@ jobs:
       - name: 🚀 Deploying via scp
         run: |
           echo "${{ secrets.DEPLOY_KEY }}" > action.key
+          chmod 600 action.key
           cd out
           scp -o "StrictHostKeyChecking no" -i ../action.key -p * ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:html/.
           cd ..
