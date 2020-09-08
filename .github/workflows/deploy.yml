@@ -5,6 +5,11 @@ on:
     branches:
       - master
 
+env:
+  OUT_DIR: out
+  KEY_FILE: action.key
+  REMOTE_DIR: html/.
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,16 +35,15 @@ jobs:
           sudo mv hugo /usr/local/bin/
           cd .. && rm -rf tmp/
           hugo version
-      - name: 🤵 Build the pages
+      - name: 🎁 Build the new pages
         run: |
-          mkdir out
-          hugo -d out
+          hugo -d ${OUT_DIR}
       - name: 🚀 Deploying via scp
         run: |
-          echo "${{ secrets.DEPLOY_KEY }}" > action.key
-          chmod 600 action.key
-          cd out
-          scp -o "StrictHostKeyChecking no" -i ../action.key -p -r * ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:html/.
+          echo "${{ secrets.DEPLOY_KEY }}" > ${KEY_FILE}
+          chmod 600 ${KEY_FILE}
+          cd ${OUT_DIR}
+          scp -o "StrictHostKeyChecking no" -i ../${KEY_FILE} -p -r * ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${REMOTE_DIR}
           cd ..
-          rm action.key
+          rm ${KEY_FILE}
 
